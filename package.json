@@ -1,4 +1,8 @@
 {
+  "name": "mesg19",
+  "version": "1.0.0",
+  "description": "MESG service for interacting with basic methods of AWS S3",
+  "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.395.0",
     "express": "^4.16.4",
@@ -6,5 +10,25 @@
     "mesg-js": "^2.0.1",
     "multer": "^1.4.1",
     "node-fetch": "^2.3.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbonoz/mesg19.git"
+  },
+  "keywords": [
+    "mesg",
+    "aws",
+    "s3",
+    "blockchain"
+  ],
+  "author": "Chris Buonocore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cbonoz/mesg19/issues"
+  },
+  "homepage": "https://github.com/cbonoz/mesg19#readme"
 }
