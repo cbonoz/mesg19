@@ -16,6 +16,7 @@ tasks:
         type: String
     outputs:
       success:
+        data: &bucketData
           buckets:
             description: "List of buckets in the AWS user's region"
             type: Object
