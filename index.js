@@ -11,8 +11,6 @@ MESG.listenTask({
   listBuckets, upload, download
 })
 
-const PORT = 3002
-
 const app = express()
 app.use(bodyParser.json())
 
@@ -52,4 +50,5 @@ app.post('/download', async (req, res) => {
   download(body, {success, error})
 })
 
+const PORT = 3003
 app.listen(PORT, () => console.log(`AWS S3 (MESG3) server started app listening on port ${PORT}!`))
