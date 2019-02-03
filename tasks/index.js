@@ -49,7 +49,7 @@ module.exports.upload = async ({ region, accessKeyId, secretAccessKey, bucket, k
             Body: base64data,
         }, function (resp) {
             log.info('Successfully uploaded package.')
-            success()
+            success({result: 'ok'})
         })
     }
     catch (e) {

@@ -3,7 +3,7 @@ sid: mesg3
 description: "MESG service for interacting with basic methods of AWS S3"
 repository: "https://github.com/cbonoz/mesg19"
 tasks:
-  list:
+  listBuckets:
     inputs:
       region:
         description: "AWS region, ex: us-east-1"
@@ -20,6 +20,63 @@ tasks:
           buckets:
             description: "List of buckets in the AWS user's region"
             type: Object
+      error:
+        data:
+          code:
+            type: String
+  upload:
+    inputs:
+      region:
+        description: "AWS region, ex: us-east-1"
+        type: String
+      accessKeyId:
+        description: "Access key id for AWS user"
+        type: String
+      secretAccessKey:
+        description: "Secret access key for AWS user"
+        type: String
+      bucket:
+        description: "AWS Bucket for the upload"
+        type: String
+      key:
+        description: "Key within the bucket"
+        type: String
+      data:
+        description: "Binary data to upload"
+        type: String
+    outputs:
+      success:
+        data: &uploadData
+          result:
+            description: "Upload result status"
+            type: string
+      error:
+        data:
+          code:
+            type: String
+  download:
+    inputs:
+      region:
+        description: "AWS region, ex: us-east-1"
+        type: String
+      accessKeyId:
+        description: "Access key id for AWS user"
+        type: String
+      secretAccessKey:
+        description: "Secret access key for AWS user"
+        type: String
+      bucket:
+        description: "AWS Bucket for the download"
+        type: String
+      key:
+        description: "Key within the bucket"
+        type: String
+    outputs:
+      success:
+        data: &downloadData
+          result:
+            description: "Downloaded data binary"
+            type: String
       error:
         data:
           code:

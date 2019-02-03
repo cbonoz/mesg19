@@ -12,7 +12,9 @@ const body = {
     region
 }
 
-fetch('localhost:3002', {
+const mesg = require('mesg-js').application()
+
+fetch('http://localhost:3002', {
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
