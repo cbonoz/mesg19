@@ -5,16 +5,16 @@ const fetch = require('node-fetch')
 const multer  = require('multer')
 const FormData = require('form-data')
 
-const { listBuckets, upload, download } = require('./tasks')
+const { listBuckets, listObjects, upload, download } = require('./tasks')
 
 MESG.listenTask({
-  listBuckets, upload, download
+  listBuckets, listObjects, upload, download
 })
 
 const app = express()
 app.use(bodyParser.json())
 
-app.post('/list', async (req, res) => {
+app.post('/buckets', async (req, res) => {
   const body = req.body
   const success = (data) => {
     return res.status(200).send({buckets: data})
@@ -24,6 +24,18 @@ app.post('/list', async (req, res) => {
   }
 
   listBuckets(body, {success, error})
+})
+
+app.post('/objects', async (req, res) => {
+  const body = req.body
+  const success = (data) => {
+    return res.status(200).send({objects: data})
+  }
+  const error = (err) => {
+    return res.status(500).send(err.toString())
+  }
+
+  listObjects(body, {success, error})
 })
 
 app.post('/upload', async (req, res) => {

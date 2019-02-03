@@ -4,6 +4,7 @@ const fetch = require('node-fetch')
 
 const accessKeyId = process.env.AWS_ACCESS_TEST
 const secretAccessKey = process.env.AWS_SECRET_TEST
+console.log(accessKeyId, secretAccessKey)
 const region = 'us-east-1'
 
 const body = {
@@ -14,7 +15,8 @@ const body = {
 
 const mesg = require('mesg-js').application()
 
-fetch('http://localhost:3002', {
+const PORT = 3003
+fetch(`http://localhost:${PORT}/buckets`, {
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },

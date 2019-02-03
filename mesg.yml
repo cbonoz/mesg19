@@ -24,6 +24,30 @@ tasks:
         data:
           code:
             type: String
+  listObjects:
+    inputs:
+      region:
+        description: "AWS region, ex: us-east-1"
+        type: String
+      accessKeyId:
+        description: "Access key id for AWS user"
+        type: String
+      secretAccessKey:
+        description: "Secret access key for AWS user"
+        type: String
+      bucket:
+        description: "AWS Bucket for the query"
+        type: String
+    outputs:
+      success:
+        data: &objectData
+          objects:
+            description: "List of objects in the AWS user's bucket (up to 1000 items)"
+            type: Object
+      error:
+        data:
+          code:
+            type: String
   upload:
     inputs:
       region:
