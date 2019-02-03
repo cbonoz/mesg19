@@ -19,15 +19,15 @@ app.use(bodyParser.json())
 app.post('/list', async (req, res) => {
   const body = req.body
   const success = (data) => {
-    return res.status(200).send(data)
+    return res.status(200).send({buckets: data})
   }
   const error = (err) => {
     return res.status(500).send(err.toString())
   }
 
   taskService.listBuckets(body, {success, error})
-
 })
+
 app.post('/upload', async (req, res) => {
   const body = req.body
   const success = (data) => {

@@ -1,60 +1,31 @@
-name: "Stripe"
-sid: stripe
-description: "Stripe service"
-repository: "https://github.com/mesg-foundation/service-stripe"
+name: "MESG3"
+sid: mesg3
+description: "MESG service for interacting with basic methods of AWS S3"
+repository: "https://github.com/cbonoz/mesg19"
 tasks:
-  charge:
+  list:
     inputs:
-      email:
-        description: "Email of the user to charge"
+      region:
+        description: "AWS region, ex: us-east-1"
         type: String
-      amount:
-        description: "Amount to charge, this value should be in cents"
-        type: Number
-      currency:
-        description: "Currency used for the payment https://stripe.com/docs/currencies"
+      accessKeyId:
+        description: "Access key id for AWS user"
         type: String
-      source:
-        description: "Source of payment (`token` or `source` returned by https://stripe.com/elements) "
+      secretAccessKey:
+        description: "Secret access key for AWS user"
         type: String
-      stripeSecretKey:
-        description: "The secret key for the Stripe API https://dashboard.stripe.com/account/apikeys (should start with `sk_`)"
-        type: String
-      metadata:
-        description: "Some meta data related to the payment"
-        type: Object
     outputs:
       success:
-        data: &chargeData
-          id:
-            description: "ID of the charge on Stripe"
-            type: String
-          date:
-            description: "Date in ISO format when the charge has been proccessed"
-            type: String
-          amount:
-            description: "Amount in cents of the charge"
-            type: Number
-          currency:
-            description: "Currency used to charge https://stripe.com/docs/currencies"
-            type: String
-          customer:
-            description: "Email of the customer charged"
-            type: String
-          paid:
-            description: "Boolean that indicates if the payment has been done"
-            type: Boolean
-          metadata:
-            description: "Some meta data related to the payment"
+          buckets:
+            description: "List of buckets in the AWS user's region"
             type: Object
       error:
         data:
           code:
             type: String
-events:
-  charged:
-    data:
-      <<: *chargeData
+# events:
+#   charged:
+#     data:
 configuration:
   ports:
-    - 3001:3001
+    - 3002:3002
