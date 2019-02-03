@@ -7,13 +7,18 @@ Many folks want to take advantage of blockchain, but don't know where to begin. 
 ## What it does
 Creates an easy connector for querying and storing information as part of a larger MESG workflow.
 
-### Dev Notes
+## Dev Notes
 ```bash
 mesg-core service deploy https://github.com/cbonoz/mesg19
 ```
 
-## Events
+### Events
 // TODO
 
-## Tasks
+### Tasks
 // TODO
+
+
+## Example Application
+* Issue and receive a payment via https://github.com/mesg-foundation/service-stripe
+* Upload a receipt to Amazon S3 via MESG3 (this repo).

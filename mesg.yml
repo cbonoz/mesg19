@@ -1,0 +1,60 @@
+name: "Stripe"
+sid: stripe
+description: "Stripe service"
+repository: "https://github.com/mesg-foundation/service-stripe"
+tasks:
+  charge:
+    inputs:
+      email:
+        description: "Email of the user to charge"
+        type: String
+      amount:
+        description: "Amount to charge, this value should be in cents"
+        type: Number
+      currency:
+        description: "Currency used for the payment https://stripe.com/docs/currencies"
+        type: String
+      source:
+        description: "Source of payment (`token` or `source` returned by https://stripe.com/elements) "
+        type: String
+      stripeSecretKey:
+        description: "The secret key for the Stripe API https://dashboard.stripe.com/account/apikeys (should start with `sk_`)"
+        type: String
+      metadata:
+        description: "Some meta data related to the payment"
+        type: Object
+    outputs:
+      success:
+        data: &chargeData
+          id:
+            description: "ID of the charge on Stripe"
+            type: String
+          date:
+            description: "Date in ISO format when the charge has been proccessed"
+            type: String
+          amount:
+            description: "Amount in cents of the charge"
+            type: Number
+          currency:
+            description: "Currency used to charge https://stripe.com/docs/currencies"
+            type: String
+          customer:
+            description: "Email of the customer charged"
+            type: String
+          paid:
+            description: "Boolean that indicates if the payment has been done"
+            type: Boolean
+          metadata:
+            description: "Some meta data related to the payment"
+            type: Object
+      error:
+        data:
+          code:
+            type: String
+events:
+  charged:
+    data:
+      <<: *chargeData
+configuration:
+  ports:
+    - 3001:3001
