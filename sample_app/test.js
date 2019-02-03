@@ -18,5 +18,5 @@ fetch('localhost:3002', {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(res => res.json())
-    .then(json => console.log(json));
+    .then(json => console.log(json))
 
