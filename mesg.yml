@@ -23,9 +23,6 @@ tasks:
         data:
           code:
             type: String
-# events:
-#   charged:
-#     data:
 configuration:
   ports:
     - 3002:3002

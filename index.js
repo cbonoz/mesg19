@@ -5,11 +5,11 @@ const fetch = require('node-fetch')
 const multer  = require('multer')
 const FormData = require('form-data')
 
-const taskService = require('./tasks')
+const { listBuckets, upload, download } = require('./tasks')
 
-// MESG.listenTask({
-//   charge
-// })
+MESG.listenTask({
+  listBuckets, upload, download
+})
 
 const PORT = 3002
 
@@ -25,7 +25,7 @@ app.post('/list', async (req, res) => {
     return res.status(500).send(err.toString())
   }
 
-  taskService.listBuckets(body, {success, error})
+  listBuckets(body, {success, error})
 })
 
 app.post('/upload', async (req, res) => {
@@ -37,7 +37,7 @@ app.post('/upload', async (req, res) => {
     return res.status(500).send(err.toString())
   }
 
-  taskService.upload(body, {success, error})
+  upload(body, {success, error})
 })
 
 app.post('/download', async (req, res) => {
@@ -49,7 +49,7 @@ app.post('/download', async (req, res) => {
     return res.status(500).send(err.toString())
   }
 
-  taskService.download(body, {success, error})
+  download(body, {success, error})
 })
 
 app.listen(PORT, () => console.log(`AWS S3 (MESG3) server started app listening on port ${PORT}!`))
