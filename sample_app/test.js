@@ -4,23 +4,34 @@ const fetch = require('node-fetch')
 
 const accessKeyId = process.env.AWS_ACCESS_TEST
 const secretAccessKey = process.env.AWS_SECRET_TEST
-console.log(accessKeyId, secretAccessKey)
 const region = 'us-east-1'
+
+const resource = process.argv[2] // one of (buckets, objects, upload, download)
+if (!resource) {
+    console.log('USAGE:  node test.js <resource>')
+    return
+}
+
+
 
 const body = {
     accessKeyId,
     secretAccessKey,
-    region
+    region,
+    bucket: 'buildsage',
+    key: 'service-worker.js'
 }
 
 const mesg = require('mesg-js').application()
 
 const PORT = 3003
-fetch(`http://localhost:${PORT}/buckets`, {
+
+fetch(`http://localhost:${PORT}/${resource}`, {
         method: 'post',
         body:    JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },
     })
     .then(res => res.json())
     .then(json => console.log(json))
+    .catch(console.error)
 

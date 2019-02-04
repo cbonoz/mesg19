@@ -73,7 +73,7 @@ module.exports.upload = async ({ region, accessKeyId, secretAccessKey, bucket, k
             Key: key,
             Body: base64data,
         }, function (resp) {
-            log.info('Successfully uploaded package.')
+            console.log('Successfully uploaded package.')
             success({result: 'ok'})
         })
     }
@@ -90,8 +90,9 @@ module.exports.download = async ({ region, accessKeyId, secretAccessKey, bucket,
     try {
         updateConfig(region, accessKeyId, secretAccessKey)
         const s3 = new AWS.S3({ params: { Bucket: bucket }, apiVersion: '2006-03-01' })
-        const data = s3bucket.getObject({ Key: key })
-        success(data)
+        const data = await s3.getObject({ Key: key }).promise();
+        const dataString = data.Body.toString('utf-8');
+        success(dataString)
     }
     catch (e) {
         error({
