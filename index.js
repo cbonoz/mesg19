@@ -53,9 +53,24 @@ app.post('/upload', async (req, res) => {
 app.post('/download', async (req, res) => {
   const body = req.body
   const success = (s3Object) => {
-    s3Object.createReadStream()
-      .on('error', (err) => res.status(500).send(err.toString()))
-      .pipe(res);
+    const stream = s3Object.createReadStream()
+      // forward errors
+    stream.on('error', function error(err) {
+        //continue to the next middlewares
+        return next();
+    });
+
+    //Add the content type to the response (it's not propagated from the S3 SDK)
+    res.set('Content-Type', mime.lookup(key));
+    res.set('Content-Length', data.ContentLength);
+    res.set('Last-Modified', data.LastModified);
+    res.set('ETag', data.ETag);
+
+    stream.on('end', () => {
+        console.log('Served by Amazon S3: ' + key);
+    });
+    //Pipe the s3 object to the response
+    stream.pipe(res);
   }
   const error = (err) => {
     return res.status(500).send(err.toString())
