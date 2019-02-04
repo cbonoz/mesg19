@@ -107,4 +107,4 @@ tasks:
             type: String
 configuration:
   ports:
-    - 3003:3003
+    - 3004:3004

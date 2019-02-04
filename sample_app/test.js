@@ -47,7 +47,7 @@ if (resource === 'upload') {
     body.bucket = bucket
 }
 
-const PORT = 3003
+const PORT = 3004
 
 fetch(`http://localhost:${PORT}/${resource}`, {
         method: 'post',
