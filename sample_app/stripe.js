@@ -7,7 +7,7 @@ const stripeApiKey = process.env.STRIPE_API_KEY
 
 const stripe = require("stripe")(stripeApiKey);
 
-// User defined params
+// User defined params.
 const region = 'us-east-1'
 const receiptBucket = 'buildsage' // Your custom bucket.
 
@@ -23,11 +23,9 @@ const PORT = 3004;
         });
         const receiptUrl = stripeResponse.receipt_url
         const receiptId = stripeResponse.id
-        // console.log('response', stripeResponse)
 
         const receiptResponse = await fetch(receiptUrl)
         const receiptData = await receiptResponse.text()
-        // console.log('receiptData', receiptData)
 
         const body = {
             accessKeyId,
