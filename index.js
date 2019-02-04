@@ -52,8 +52,10 @@ app.post('/upload', async (req, res) => {
 
 app.post('/download', async (req, res) => {
   const body = req.body
-  const success = (data) => {
-    return res.status(200).send(data)
+  const success = (s3Object) => {
+    s3Object.createReadStream()
+      .on('error', (err) => res.status(500).send(err.toString()))
+      .pipe(res);
   }
   const error = (err) => {
     return res.status(500).send(err.toString())
