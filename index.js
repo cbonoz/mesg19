@@ -1,9 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const MESG = require('mesg-js').service()
-const fetch = require('node-fetch')
-const multer  = require('multer')
-const FormData = require('form-data')
 
 const { listBuckets, listObjects, upload, download } = require('./tasks')
 

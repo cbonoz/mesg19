@@ -91,9 +91,6 @@ module.exports.download = async ({ region, accessKeyId, secretAccessKey, bucket,
         updateConfig(region, accessKeyId, secretAccessKey)
         const s3 = new AWS.S3({ params: { Bucket: bucket }, apiVersion: '2006-03-01' })
         success(s3.getObject({ Key: key }))
-        // const dataString = data.Body.toString('utf-8');
-        // console.log('dataString', dataString)
-        // success(dataString)
     }
     catch (e) {
         error({
