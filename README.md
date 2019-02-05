@@ -12,12 +12,124 @@ Creates an easy connector for querying and storing information as part of a larg
 mesg-core service deploy https://github.com/cbonoz/mesg19
 ```
 
-### Events
-// TODO
+<!-- ### Events -->
 
 ### Tasks
-`See mesg.yml`
+* List Buckets `/buckets`
+* List Objects in bucket `/objects`
+* Upload file to bucket
+* Download file from bucket
 
+<pre>
+  listBuckets:
+    inputs:
+      region:
+        description: "AWS region, ex: us-east-1"
+        type: String
+      accessKeyId:
+        description: "Access key id for AWS user"
+        type: String
+      secretAccessKey:
+        description: "Secret access key for AWS user"
+        type: String
+    outputs:
+      success:
+        data: &bucketData
+          buckets:
+            description: "List of buckets in the AWS user's region"
+            type: Object
+      error:
+        data:
+          code:
+            type: String
+</pre>
+<pre>
+  listObjects:
+    inputs:
+      region:
+        description: "AWS region, ex: us-east-1"
+        type: String
+      accessKeyId:
+        description: "Access key id for AWS user"
+        type: String
+      secretAccessKey:
+        description: "Secret access key for AWS user"
+        type: String
+      bucket:
+        description: "AWS Bucket for the query"
+        type: String
+    outputs:
+      success:
+        data: &objectData
+          objects:
+            description: "List of objects in the AWS user's bucket (up to 1000 items)"
+            type: Object
+      error:
+        data:
+          code:
+            type: String
+</pre>
+<pre>
+  upload:
+    inputs:
+      region:
+        description: "AWS region, ex: us-east-1"
+        type: String
+      accessKeyId:
+        description: "Access key id for AWS user"
+        type: String
+      secretAccessKey:
+        description: "Secret access key for AWS user"
+        type: String
+      bucket:
+        description: "AWS Bucket for the upload"
+        type: String
+      key:
+        description: "Key within the bucket"
+        type: String
+      data:
+        description: "Binary data to upload"
+        type: String
+    outputs:
+      success:
+        data: &uploadData
+          result:
+            description: "Upload result status"
+            type: String
+      error:
+        data:
+          code:
+            type: String
+</pre>
+<pre>
+  download:
+    inputs:
+      region:
+        description: "AWS region, ex: us-east-1"
+        type: String
+      accessKeyId:
+        description: "Access key id for AWS user"
+        type: String
+      secretAccessKey:
+        description: "Secret access key for AWS user"
+        type: String
+      bucket:
+        description: "AWS Bucket for the download"
+        type: String
+      key:
+        description: "Key within the bucket"
+        type: String
+    outputs:
+      success:
+        data: &downloadData
+          result:
+            description: "Downloaded data binary"
+            type: String
+      error:
+        data:
+          code:
+            type: String
+</pre>
 
 ## Example Application
 * Issue and receive a payment via https://github.com/mesg-foundation/service-stripe
