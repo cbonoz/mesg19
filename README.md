@@ -17,8 +17,8 @@ mesg-core service deploy https://github.com/cbonoz/mesg19
 ### Tasks
 * List Buckets `/buckets`
 * List Objects in bucket `/objects`
-* Upload file to bucket
-* Download file from bucket
+* Upload file to bucket `/upload`
+* Download file from bucket `/download`
 
 <pre>
   listBuckets:
