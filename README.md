@@ -146,9 +146,9 @@ mesg-core service deploy https://github.com/cbonoz/mesg19
 </pre>
 * Define the following environment TEST (or production) credentials:
 <pre>
-    AWS_ACCESS_TEST=<YOUR_AWS_ACCESS_KEY_HERE>
-    AWS_SECRET_TEST=<YOUR_AWS_SECRET_KEY_HERE>
-    STRIPE_API_KEY=<YOUR_STRIPE_API_KEY>
+    AWS_ACCESS_TEST='YOUR_AWS_ACCESS_KEY_HERE'
+    AWS_SECRET_TEST='YOUR_AWS_SECRET_KEY_HERE'
+    STRIPE_API_KEY='YOUR_STRIPE_API_KEY'
 </pre>
 * Call the stripe test workflow. This example shows a simple 3 step process of processing a payment, retrieving the receipt data from the stripe API, and uploading the receipt to an S3 bucket of your choosing:
 <pre>
@@ -156,5 +156,5 @@ mesg-core service deploy https://github.com/cbonoz/mesg19
 </pre>
 If successful, you should now see an image similar to the following in your s3 bucket.
 <div align="center">
-    <img style="width: 400px" src="./img/sample_receipt.png"/>
+    <img width="300" src="./img/sample_receipt.png"/>h
 </div>
