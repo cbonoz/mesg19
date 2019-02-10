@@ -1,3 +1,7 @@
+<div align="center">
+    <img width="300" src="./img/mesg3.png"/>h
+</div>
+
 # MESG3
 ---
 
@@ -12,9 +16,40 @@ Creates an easy connector for querying and storing information as part of a larg
 mesg-core service deploy https://github.com/cbonoz/mesg19
 ```
 
+## Example Application
+* Issue and receive a payment via https://github.com/mesg-foundation/service-stripe
+* Upload a receipt to Amazon S3 via MESG3 (this repo).
+
+### How to setup example
+* Deploy and start the services
+<pre>
+    mesg-core start
+    mesg-core service deploy https://github.com/cbonoz/mesg19
+    mesg-core service start SERVICE_ID # service id that was just printed after the deploy.
+    mesg-core service deploy https://github.com/mesg-foundation/service-stripe
+    mesg-core service start SERVICE_ID # service id that was just printed after the deploy.
+</pre>
+
+* Define the following environment TEST (or production) credentials:
+<pre>
+    AWS_ACCESS_TEST='YOUR_AWS_ACCESS_KEY_HERE'
+    AWS_SECRET_TEST='YOUR_AWS_SECRET_KEY_HERE'
+    STRIPE_API_KEY='YOUR_STRIPE_API_KEY'
+</pre>
+
+* Call the stripe test workflow. This example shows a simple 3 step process of processing a payment, retrieving the receipt data from the stripe API, and uploading the receipt to an S3 bucket of your choosing:
+<pre>
+    node sample_app/stripe.js
+</pre>
+
+If successful, you should now see an image similar to the following in your s3 bucket.
+<div align="center">
+    <img width="300" src="./img/sample_receipt.png"/>h
+</div>
+
 <!-- ### Events -->
 
-### Tasks
+### Tasks / Schema
 * List Buckets `/buckets`
 * List Objects in bucket `/objects`
 * Upload file to bucket `/upload`
@@ -131,30 +166,3 @@ mesg-core service deploy https://github.com/cbonoz/mesg19
             type: String
 </pre>
 
-## Example Application
-* Issue and receive a payment via https://github.com/mesg-foundation/service-stripe
-* Upload a receipt to Amazon S3 via MESG3 (this repo).
-
-### How to setup example
-* Deploy and start the services
-<pre>
-    mesg-core start
-    mesg-core service deploy https://github.com/cbonoz/mesg19
-    mesg-core service deploy https://github.com/mesg-foundation/service-stripe
-    mesg-core service start https://github.com/mesg-foundation/service-stripe
-    mesg-core service start https://github.com/cbonoz/mesg19
-</pre>
-* Define the following environment TEST (or production) credentials:
-<pre>
-    AWS_ACCESS_TEST='YOUR_AWS_ACCESS_KEY_HERE'
-    AWS_SECRET_TEST='YOUR_AWS_SECRET_KEY_HERE'
-    STRIPE_API_KEY='YOUR_STRIPE_API_KEY'
-</pre>
-* Call the stripe test workflow. This example shows a simple 3 step process of processing a payment, retrieving the receipt data from the stripe API, and uploading the receipt to an S3 bucket of your choosing:
-<pre>
-    node sample_app/stripe.js
-</pre>
-If successful, you should now see an image similar to the following in your s3 bucket.
-<div align="center">
-    <img width="300" src="./img/sample_receipt.png"/>h
-</div>
