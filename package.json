@@ -1,6 +1,6 @@
 {
   "name": "mesg19",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "MESG service for interacting with basic methods of AWS S3",
   "main": "index.js",
   "dependencies": {
