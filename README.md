@@ -42,8 +42,7 @@ mesg-core service deploy https://github.com/cbonoz/mesg19
     AWS_SECRET_TEST='YOUR_AWS_SECRET_KEY_HERE'
     STRIPE_API_KEY='YOUR_STRIPE_API_KEY'
 </pre>
-
-* Call the stripe test workflow. This example shows a simple 3 step process of processing a payment, retrieving the receipt data from the stripe API, and uploading the receipt to an S3 bucket of your choosing:
+* Call the stripe test workflow. You'll need to ensure the stripe nodejs library is installed locally to simulate a payment via the script. This example shows a simple 3 step process of processing a payment, retrieving the receipt data from the stripe API, and uploading the receipt to an S3 bucket of your choosing:
 <pre>
     node sample_app/stripe.js
 </pre>
