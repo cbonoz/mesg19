@@ -25,7 +25,7 @@
     "blockchain"
   ],
   "author": "Chris Buonocore",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cbonoz/mesg19/issues"
   },
