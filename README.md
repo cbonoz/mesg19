@@ -15,7 +15,8 @@ MESG3 enables easy integration of applications with Amazon S3 using this service
 * List Objects in bucket `/objects`
 * Upload file to bucket `/upload`
 * Download file from bucket `/download`
-* 
+
+
 ## Dev Notes
 ```bash
 mesg-core service deploy https://github.com/cbonoz/mesg19
@@ -54,6 +55,11 @@ If successful, you should now see an image similar to the following in your s3 b
 </div>
 
 ### Tasks / Schema
+* listBuckets
+* listObjects
+* upload
+* download
+
 
 <pre>
   listBuckets:
@@ -78,6 +84,7 @@ If successful, you should now see an image similar to the following in your s3 b
           code:
             type: String
 </pre>
+
 <pre>
   listObjects:
     inputs:
