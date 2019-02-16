@@ -2,7 +2,7 @@
     <img width="300" src="./img/mesg3.png"/>
 </div>
 
-# MESG3
+MESG3
 ---
 
 MESG3 enables easy integration of applications with Amazon S3 using this service to upload and query files from S3 Buckets.
