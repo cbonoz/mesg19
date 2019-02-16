@@ -62,4 +62,4 @@ app.post('/download', async (req, res) => {
 })
 
 const PORT = 3004
-app.listen(PORT, () => console.log(`AWS S3 (MESG3) server started app listening on port ${PORT}!`))
+app.listen(PORT, () => console.log(`MESG3 service started - listening on port ${PORT}!`))
