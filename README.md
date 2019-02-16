@@ -1,16 +1,18 @@
 <div align="center">
-    <img width="300" src="./img/mesg3.png"/>h
+    <img width="300" src="./img/mesg3.png"/>
 </div>
 
 # MESG3
 ---
 
-## Inspiration
-Many folks want to take advantage of blockchain, but don't know where to begin. With MESGBox, users can easily integrate their applications with Amazon S3 using this simple MESG service to upload and query files.
+MESG3 enables easy integration of applications with Amazon S3 using this service to upload and query files from S3 Buckets.
 
-## What it does
-Creates an easy connector for querying and storing information as part of a larger MESG workflow.
-
+## Supported Resources
+* List Buckets `/buckets`
+* List Objects in bucket `/objects`
+* Upload file to bucket `/upload`
+* Download file from bucket `/download`
+* 
 ## Dev Notes
 ```bash
 mesg-core service deploy https://github.com/cbonoz/mesg19
@@ -20,8 +22,9 @@ mesg-core service deploy https://github.com/cbonoz/mesg19
 * Issue and receive a payment via https://github.com/mesg-foundation/service-stripe
 * Upload a receipt to Amazon S3 via MESG3 (this repo).
 
-### How to setup example
-* Deploy and start the services
+### Setup of Example Application
+
+* Deploy and start the services:
 <pre>
     mesg-core start
     mesg-core service deploy https://github.com/cbonoz/mesg19
@@ -43,17 +46,12 @@ mesg-core service deploy https://github.com/cbonoz/mesg19
 </pre>
 
 If successful, you should now see an image similar to the following in your s3 bucket.
+
 <div align="center">
     <img width="300" src="./img/sample_receipt.png"/>h
 </div>
 
-<!-- ### Events -->
-
 ### Tasks / Schema
-* List Buckets `/buckets`
-* List Objects in bucket `/objects`
-* Upload file to bucket `/upload`
-* Download file from bucket `/download`
 
 <pre>
   listBuckets:
