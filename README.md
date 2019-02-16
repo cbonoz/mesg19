@@ -16,7 +16,7 @@ MESG3 enables easy integration of applications with Amazon S3 using this service
 * Upload file to bucket `/upload`
 * Download file from bucket `/download`
 
-
+Schema described below.
 ## Dev Notes
 ```bash
 mesg-core service deploy https://github.com/cbonoz/mesg19
