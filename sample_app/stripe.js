@@ -55,7 +55,7 @@ const PORT = 3004;
         })
 
         const result = await uploadResponse.text()
-        const resultPayload = { result, upload: key }
+        const resultPayload = { result, bucket, upload: key }
         console.log(resultPayload)
     } catch (e) {
         console.error('error', e)
