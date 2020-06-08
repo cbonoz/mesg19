@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const MESG = require('mesg-js').service()
+const MESG = new (require('@liteflow/service'))()
 
 const { listBuckets, listObjects, upload, download } = require('./tasks')
 

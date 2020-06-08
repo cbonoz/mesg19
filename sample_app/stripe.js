@@ -15,7 +15,7 @@ const stripe = require("stripe")(stripeApiKey);
 
 // User defined params.
 const region = 'us-east-1' 
-const bucket = 'mesg-receipts'
+const bucket = 'liteflow-receipts'
 
 const PORT = 3004;
 

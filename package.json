@@ -4,9 +4,9 @@
   "description": "MESG service for interacting with basic methods of AWS S3",
   "main": "index.js",
   "dependencies": {
+    "@liteflow/service": "^1.0.7",
     "aws-sdk": "^2.395.0",
     "express": "^4.16.4",
-    "mesg-js": "^2.0.1",
     "node-fetch": "^2.3.0"
   },
   "devDependencies": {
